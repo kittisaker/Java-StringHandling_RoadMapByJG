@@ -638,21 +638,709 @@ Note: Recompile with -Xlint:deprecation for details.
 </details>
 
 ### getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
+```java
+void getChars(int sourceStart, int sourceEnd, char target[], int targetStart)
+```
 
+```java
+public class getCharsDemo {
+    public static void main(String[] args) {
+        String s = "This is a demo of the getChars method.";
+        int start = 10;
+        int end = 14;
 
+        char buf[] = new char[end - start];
 
-
-
-
-
-
----
+        s.getChars(start, end, buf, 0);
+        System.out.println(buf);
+    }    
+}
+```
 
 <details>
 <summary>Output : </summary>
 
 ```shell
-
+demo
 ```
 
 </details>
+
+### hashCode()
+```java
+s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]
+```
+
+```java
+public class HashcodeExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+        int hashcode = str.hashCode();
+        System.out.println("hashcode of " + str + " is :: " + hashcode);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+hashcode of javaguides is :: -138203751
+```
+
+</details>
+
+### indexOf()
+* indexOf(int ch) :  Returns the index within this string of the first occurrence of the specified character.
+* indexOf(int ch, int fromIndex) : Returns the index within this string of the first occurrence of the specified character, starting the search at the specified index.
+* indexOf(String str) : Returns the index within this string of the first occurrence of the specified substring.
+* indexOf(String str, int fromIndex) : Returns the index within this string of the first occurrence of the specified substring, starting at the specified index.
+
+```java
+public class IndexOfExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+
+        // Method 1
+        int index = str.indexOf("java");
+        System.out.println(index);
+        // Remember index starts with 0 so count from 0
+        System.out.println("index of guides :: " + str.indexOf("guides"));
+        System.out.println("index of des :: " + str.indexOf("des"));
+
+         // method 2
+         System.out.println(str.indexOf('s'));
+
+         // method 3
+        System.out.println(str.indexOf('g', 0));
+
+         // method 4
+        System.out.println(str.indexOf("guides", 3));
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+0
+index of guides :: 4
+index of des :: 7
+9
+4
+4
+```
+
+</details>
+
+### intern()
+Returns a canonical representation for the string object.
+A pool of strings, initially empty, is maintained privately by the class String.
+```java
+public class InternExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+        String newStr = new String("javaguides");
+        System.out.println(newStr.intern().equals(str));
+        System.out.println(newStr.equals(str));
+        
+        newStr.intern();
+        str.intern();
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+true
+true
+javaguides
+javaguides
+```
+
+</details>
+
+### lastIndexOf() methods
+* lastIndexOf(int ch) : Returns the index within this string of the last occurrence of the specified character.
+* lastIndexOf(int ch, int fromIndex) : Returns the index within this string of the last occurrence of the specified character, searching backward starting at the specified index.
+* lastIndexOf(String str) : Returns the index within this string of the last occurrence of the specified substring.
+* lastIndexOf(String str, int fromIndex) : Returns the index within this string of the last occurrence of the specified substring, searching backward starting at the specified index.
+
+```java
+public class LastIndexOfExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+
+         // method1
+        int lastIndexOf = str.lastIndexOf('s');
+        System.out.println(" last index of given character 's' in' " + " "+ str+"' ::  " + lastIndexOf);
+        
+        // method 2
+        lastIndexOf = str.lastIndexOf("guides");
+        System.out.println(" last index of given string 'guides' in' " + " "+ str+"' ::  " + lastIndexOf);
+        
+        // method 3
+        lastIndexOf = str.lastIndexOf("guides", 4);
+        System.out.println(" last index of guides in given  string " + " "+ str+" and from index  " + lastIndexOf);
+        
+        // method 4
+        lastIndexOf = str.lastIndexOf('g', str.length());
+        System.out.println(" last index of given char ::  " + lastIndexOf);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+ last index of given character 's' in'  javaguides' ::  9
+ last index of given string 'guides' in'  javaguides' ::  4
+ last index of guides in given  string  javaguides and from index  4
+ last index of given char ::  4
+```
+
+</details>
+
+### length()
+```java
+int length()
+```
+
+```jaa
+public class LengthExample {
+    public static void main(String[] args) {
+        String str = new String("Java Guides");
+        int length = str.length();
+        System.out.println(" length of the string '" + str + "' is :: " + length);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+ length of the string 'Java Guides' is :: 11
+```
+
+</details>
+
+### regionMatches()  methods
+* regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len) : Tests if two string regions are equal.
+* regionMatches(int toffset, String other, int ooffset, int len) : Tests if two string regions are equal.
+```java
+public class RegionMatchesExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+        String subStr = "guides";
+        boolean b = str.regionMatches(0, subStr, str.length(), str.length());
+        boolean b1 = str.regionMatches(true, 0, str, 0, str.length());
+        System.out.println(b);
+        System.out.println(b1);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+false
+true
+```
+
+</details>
+
+### replace()  methods
+```java
+public class ReplaceExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+        String subStr = str.replace('a', 'b');
+        System.out.println("replace char 'a' with char 'b' from given string : " + subStr);
+        
+        subStr = str.replace("guides", "tutorials");
+        System.out.println("replace guides with tutorials from given string : " + subStr);
+        
+        subStr = str.replaceAll("[a-z]", "java");
+        System.out.println(subStr);
+        
+        subStr = str.replaceFirst("[a-z]", "java");
+        System.out.println(subStr);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+replace char 'a' with char 'b' from given string : jbvbguides
+replace guides with tutorials from given string : javatutorials
+javajavajavajavajavajavajavajavajavajava
+javaavaguides
+```
+
+</details>
+
+### replaceAll(String regex, String replacement)
+```java
+public class ReplaceExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+        String subStr = str.replaceAll("[a-z]", "java");
+        System.out.println(subStr);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+javajavajavajavajavajavajavajavajavajava
+```
+
+</details>
+
+### replaceFirst(String regex, String replacement)
+```java
+public class ReplaceExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+        String subStr = str.replaceFirst("[a-z]", "java");
+        System.out.println(subStr);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+javaavaguides
+```
+
+</details>
+
+### split() methods
+* split(String regex) : Splits this string around matches of the given regular expression.
+* split(String regex, int limit) : Splits this string around matches of the given regular expression.
+```java
+public class SplitExample {
+    public static void main(String[] args) {
+        String str = "java,guides.net";
+        String[] strArray = str.split(",");
+        
+        for (int i = 0; i < strArray.length; i++) {
+            System.out.println(strArray[i]);
+        }
+
+        strArray = str.split(",", 0);
+        
+        for (int i = 0; i < strArray.length; i++) {
+            System.out.println(strArray[i]);
+        }
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+java
+guides.net
+java
+guides.net
+```
+
+</details>
+
+### startsWith() methods
+* startsWith(String prefix) : Tests if this string starts with the specified prefix.
+* boolean startsWith(String prefix, int toffset) : Tests if the substring of this string beginning at the specified index starts with the specified prefix.
+```java
+public class StartsWithExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+        boolean startWith = str.startsWith("ja");
+        System.out.println("startWith :: " +startWith);
+        
+        boolean startWithOffset = str.startsWith("guides", 4);
+        System.out.println("startWithOffset :: " + startWithOffset);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+startWith :: true
+startWithOffset :: true
+```
+
+</details>
+
+### subSequence(int beginIndex, int endIndex)
+Returns a character sequence that is a subsequence of this sequence.
+```java
+public class SubSequenceExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+        CharSequence subStr = str.subSequence(0, str.length());
+        System.out.println("Returns a character sequence that " + " is a subsequence of this sequence : " + subStr);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+Returns a character sequence that  is a subsequence of this sequence : javaguides
+```
+
+</details>
+
+### substring()  methods
+* String substring(int beginIndex) : Returns a string that is a substring of this string. 
+* String substring(int beginIndex, int endIndex)  - Returns a string that is a substring of this string.
+```java
+public class SubStringExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+         // substring from start to end
+        String subStr = str.substring(0, str.length());
+        System.out.println("substring from 0 to length of the string : " + subStr);
+
+        subStr = str.substring(4);
+        System.out.println("Sub string starts from index 4 : " + subStr);
+        System.out.println(str.substring(1));
+        System.out.println("unhappy".substring(2));
+        System.out.println("Harbison".substring(3));
+        System.out.println("emptiness".substring(8));
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+substring from 0 to length of the string : javaguides
+Sub string starts from index 4 : guides
+avaguides
+happy
+bison
+s
+```
+
+</details>
+
+### char[] java.lang.String.toCharArray()
+Converts this string to a new character array.
+```java
+public class ToCharArrayExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+        char[] characters = str.toCharArray();
+        for (char c :  characters) {
+            System.out.println(c);
+        }
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+j
+a
+v
+a
+g
+u
+i
+d
+e
+s
+```
+
+</details>
+
+### toLowerCase()  methods
+* toLowerCase() :  Converts all of the characters in this String to lowercase using the rules of the default locale.
+* String toLowerCase(Locale locale) : Converts all of the characters in this String to lowercase using the rules of the given Locale.
+```java
+import java.util.Locale;
+
+public class ToLowerCaseExample {
+    public static void main(String[] args) {
+        String str = "JAVAGUIDES";
+        String subStr = str.toLowerCase();
+        System.out.println(subStr);
+        
+        subStr = str.toLowerCase(Locale.ENGLISH);
+        System.out.println(subStr);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+javaguides
+javaguides
+```
+
+</details>
+
+### toString()
+```java
+public class ToStringExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+        System.out.println(str.toString());
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+javaguides
+```
+
+</details>
+
+### toUpperCase() methods
+* toUpperCase() : Converts all of the characters in this String to upper case using the rules of the default locale.
+* String toUpperCase(Locale locale) : Converts all of the characters in this String to upper case using the rules of the given Locale.
+```java
+public class ToUpperCaseExample {
+    public static void main(String[] args) {
+        String str = "javaguides";
+        String subStr = str.toUpperCase();
+        System.out.println(subStr);
+
+        subStr = str.toUpperCase(Locale.ENGLISH);
+        System.out.println(subStr);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+JAVAGUIDES JAVAGUIDES 
+```
+
+</details>
+
+### trim()
+```java
+public class TrimExample {
+    public static void main(String[] args) {
+        String str = "javaguides ";
+        String subStr = str.trim();
+        System.out.println("trim the space from given string : " + subStr);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+trim the space from given string: javaguides 
+```
+
+</details>
+
+### valueOf()
+```java
+public static String valueOf(boolean b) 
+public static String valueOf(char c) 
+public static String valueOf(char[] c) 
+public static String valueOf(int i) 
+public static String valueOf(long l) 
+public static String valueOf(float f) 
+public static String valueOf(double d) 
+public static String valueOf(Object o) 
+```
+
+```java
+public class StringValueOfExample5 {
+    public static void main(String[] args) {
+        boolean b1=true;
+        byte b2=11;
+        short sh = 12;
+        int i = 13;
+        long l = 14L;
+        float f = 15.5f;
+        double d = 16.5d;
+        char chr[]= { 'j', 'a', 'v', 'a' };
+
+        StringValueOfExample5 obj=new StringValueOfExample5();
+        String s1 = String.valueOf(b1);
+        String s2 = String.valueOf(b2);
+        String s3 = String.valueOf(sh);
+        String s4 = String.valueOf(i);
+        String s5 = String.valueOf(l);
+        String s6 = String.valueOf(f);
+        String s7 = String.valueOf(d);
+        String s8 = String.valueOf(chr);
+        String s9 = String.valueOf(obj);
+        
+        System.out.println(s1);
+        System.out.println(s2);
+        System.out.println(s3);
+        System.out.println(s4);
+        System.out.println(s5);
+        System.out.println(s6);
+        System.out.println(s7);
+        System.out.println(s8);
+        System.out.println(s9);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+true
+11
+12
+13
+14
+15.5
+16.5
+java
+StringValueOfExample5@19dc67c2
+```
+
+</details>
+
+## New string methods introduced in Java 11
+
+### strip(): 
+```java
+String str = "  javaguides  ";
+String result = str.strip();
+System.out.println(result); // Output: javaguides
+```
+
+### stripLeading(): 
+```java
+String str = "  javaguides";
+String result = str.stripLeading();
+System.out.println(result); // Output: javaguides
+```
+
+### stripTrailing(): 
+```java
+String str = "javaguides  ";
+String result = str.stripTrailing();
+System.out.println(result); // Output: javaguides
+```
+
+### isBlank():
+```java
+String str = "  ";
+boolean result = str.isBlank();
+System.out.println(result); // Output: true
+```
+
+### lines():
+```java
+String str = "javaguides\nJava 11";
+str.lines().forEach(System.out::println);
+// Output:
+// javaguides
+// Java 11
+```
+
+### repeat(int count): 
+```java
+String str = "javaguides ";
+String result = str.repeat(3);
+System.out.println(result); // Output: javaguides javaguides javaguides
+```
+
+## New methods introduced in Java 12
+
+### indent(int n):
+```java
+String str = "Java\n12";
+String indented = str.indent(4);
+System.out.println(indented); // Output will have 4 spaces at the beginning of each line
+```
+
+### transform(Function<? super String, ? extends R> f): 
+```java
+String original = "  java 12  ";
+String transformed = original
+        .transform(String::strip)
+        .transform(s -> s.concat(" is awesome"))
+        .transform(String::toUpperCase);
+System.out.println(transformed); // Output: JAVA 12 IS AWESOME
+```
+
+### describeConstable(): 
+```java
+String str = "Java";
+Optional<String> opt = str.describeConstable();
+opt.ifPresent(System.out::println); // Output: Java
+```
+
+### resolveConstantDesc(MethodHandles.Lookup lookup):
+```java
+String str = "Java";
+String resolved = str.resolveConstantDesc(MethodHandles.lookup());
+System.out.println(resolved); // Output: Java
+```
+
+## Java 15 New String Methods
+
+### formatted(Object... args): 
+```java
+String template = "Welcome to %s!";
+String result = template.formatted("javaguides");
+System.out.println(result); // Output: Welcome to javaguides!
+```
+
+### stripIndent(): 
+```java
+String textBlock = """
+           javaguides
+           Java 15
+        """;
+String result = textBlock.stripIndent();
+System.out.println(result);
+// Output:
+// javaguides
+// Java 15
+```
+
+### translateEscapes(): 
+```java
+String str = "javaguides\\nJava 15";
+String result = str.translateEscapes();
+System.out.println(result);
+// Output:
+// javaguides
+// Java 15
+```
+
+---
