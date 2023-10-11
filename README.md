@@ -148,6 +148,315 @@ Appends the string representation of the codePoint argument to this sequence.  :
 </details>
 
 ### capacity() Method
+```java
+public class CapacityExample {
+    public static void main(String[] args) {
+        StringBuffer builder = new StringBuffer("javaguides");
+        int capacity = builder.capacity();
+
+        // initial capacity
+        System.out.println(new StringBuffer().capacity());
+
+        // initial capacity 16 + number of characters in string
+        System.out.println("Capacity of the string :: " + capacity);
+        
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+16
+Capacity of the string :: 26
+```
+
+</details>
+
+### charAt(int index) Method
+```java
+public class test {
+
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("Welcome to string handling guide");
+
+        char ch1 = buffer.charAt(0);
+        char ch2 = buffer.charAt(5);
+        char ch3 = buffer.charAt(11);
+        char ch4 = buffer.charAt(20);
+
+        System.out.println("Character at 0 index is: " + ch1);
+        System.out.println("Character at 5th index is: " + ch2);
+        System.out.println("Character at 11th index is: " + ch3);
+        System.out.println("Character at 20th index is: " + ch4);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+Character at 0 index is: W
+Character at 5th index is: m
+Character at 11th index is: s
+Character at 20th index is: n
+```
+
+</details>
+
+```java
+public class test {
+
+    public static void main(String[] args) {
+        StringBuffer builder = new StringBuffer("Java Guides");
+        char ch1 = builder.charAt(builder.length());
+        System.out.println("character :: " + ch1);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: index 11, length 11
+    at java.base/java.lang.String.checkIndex(String.java:4563)
+    at java.base/java.lang.AbstractStringBuilder.charAt(AbstractStringBuilder.java:351)
+    at java.base/java.lang.StringBuffer.charAt(StringBuffer.java:243)
+    at test.main(test.java:5)
+```
+
+</details>
+
+```java
+public class test {
+
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("Java Guides");
+        int strLength = buffer.length() - 1;
+
+        // Fetching first character
+        System.out.println("Character at 0 index is: " + buffer.charAt(0));
+        // The last Character is present at the string length-1 index
+        System.out.println("Character at last index is: " + buffer.charAt(strLength));
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+Character at 0 index is: J
+Character at last index is: s
+```
+
+</details>
+
+### codePointAt(int index) Method
+```java
+public class CodePointAtExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides");
+        int unicode = buffer.codePointAt(0);
+        System.out.println("the character (Unicode code point) at the specified index is :: " + unicode);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+the character (Unicode code point) at the specified index is :: 106
+```
+
+</details>
+
+### codePointBefore(int index) Method
+```java
+public class CodePointBeforeExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides");
+        int unicode = buffer.codePointBefore(1);
+
+        System.out.println("the character (Unicode code point) at the before specified index is :: " + unicode);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+the character (Unicode code point) at the before specified index is :: 106
+```
+
+</details>
+
+### codePointCount(int beginIndex, int endIndex) Method
+```java
+public class CodePointCountExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides");
+
+        System.out.println("length of the string :: " + buffer.length());
+
+        int unicode  = buffer.codePointCount(0, buffer.length());
+        System.out.println("the character (Unicode code point) at the specified index is :: " + unicode);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+length of the string :: 10
+the character (Unicode code point) at the specified index is :: 10
+```
+
+</details>
+
+
+### delete(int start, int end) Method
+```java
+public class DeleteExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides");
+
+        // start with index and end with end -1
+        StringBuffer subBuffer = buffer.delete(0, 4);
+        System.out.println("Delete string 'java' from string 'javaguides' : " + subBuffer.toString());
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+Delete string 'java' from string 'javaguides' : guides
+```
+
+</details>
+
+### deleteCharAt(int index) Method
+```java
+public class DeleteCharAtExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides").deleteCharAt(4);
+        System.out.println("Delete char 'g' from string 'javaguides' : " + buffer);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+Delete char 'g' from string 'javaguides' : javauides
+```
+
+</details>
+
+### ensureCapacity(int minimumCapacity) Method
+Ensures that the capacity is at least equal to the specified minimum. If the current capacity is less than the argument, then a new internal array is allocated with greater capacity. The new capacity is the larger of:
+* The minimumCapacity argument.
+* Twice the old capacity, plus 2.
+```java
+public class EnsureCapacityExample {
+    public static void main(String[] args) {
+        StringBuffer builder = new StringBuffer();
+        builder.ensureCapacity(11);
+        System.out.println(builder.capacity());
+
+        builder.ensureCapacity(17);
+        System.out.println(builder.capacity());
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+16
+34
+```
+
+</details>
+
+### getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) Method
+Characters are copied from this sequence into the destination character array dst.
+```java
+public class GetCharsExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides");
+        char[] dst = new char[buffer.length()];
+        buffer.getChars(0, buffer.length(), dst, 0);
+
+        for(char c : dst){
+            System.out.println(c);
+        }
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+j
+a
+v
+a
+g
+u
+i
+d
+e
+s
+```
+
+</details>
+
+### indexOf() methods
+* indexOf(String str) - Returns the index within this string of the first occurrence of the specified substring.
+* indexOf(String str, int fromIndex) - Returns the index within this string of the first occurrence of the specified substring, starting at the specified index.
+```java
+public class IndexOfExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides");
+
+        // method 1
+        int index = buffer.indexOf("guides");
+        System.out.println(index);
+
+        // method 2
+        index = buffer.indexOf("guides", 3);
+        System.out.println(index);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+4
+4
+```
+
+</details>
+
+### insert() methods
+
+
+
+
 
 
 
