@@ -1,46 +1,64 @@
-# Java Array : Chapter 9 String Searching Methods in Java with Examples
+# Java Array : Chapter 10 String Modifying Methods with Examples
 
-## 1. Searching for a Character or Substring
-### indexOf(int ch) and indexOf(int ch, int fromIndex) 
+## 1. concat(String str) 
 ```java
-String str = "JavaGuides";
-int index = str.indexOf('a');
-// Result: 1
+String str = "Java";
+String result = str.concat("Guides");
+// Result: "JavaGuides"
 ```
 
-## 2. Searching for the Last Occurrence
-### lastIndexOf(int ch) and lastIndexOf(int ch, int fromIndex)
+## 2. replace(char oldChar, char newChar)
 ```java
-String str = "JavaGuides";
-int index = str.lastIndexOf('a');
-// Result: 3
+String str = "Java";
+String result = str.replace('a', 'o');
+// Result: "Jovo"
 ```
 
-## 3. Checking If a String Contains a Sequence
-### contains(CharSequence sequence)
+## 3. substring(int beginIndex) and substring(int beginIndex, int endIndex)
 ```java
 String str = "JavaGuides";
-boolean result = str.contains("Guides");
-// Result: true
+String result1 = str.substring(4);
+// Result: "Guides"
+
+String result2 = str.substring(4, 6);
+// Result: "Gu"
 ```
 
-## 4. Checking Prefix and Suffix
-### startsWith(String prefix) and endsWith(String suffix)
+## 4. toLowerCase() and toUpperCase() 
+```java
+String str = "Java";
+String lower = str.toLowerCase();
+// Result: "java"
+
+String upper = str.toUpperCase();
+// Result: "JAVA"
+```
+
+## 5. trim()
+```java
+String str = " JavaGuides ";
+String result = str.trim();
+// Result: "JavaGuides"
+```
+
+## 6. split(String regex) 
+```java
+String str = "Java,Guides";
+String[] result = str.split(",");
+// Result: ["Java", "Guides"]
+```
+
+## 7. replaceAll(String regex, String replacement)
 ```java
 String str = "JavaGuides";
-boolean startsWith = str.startsWith("Java");
-// Result: true
-
-boolean endsWith = str.endsWith("Guides");
-// Result: true
+String result = str.replaceAll("a", "o");
+// Result: "JovoGuides"
 ```
 
-## 5. Matching Regular Expressions 
-### matches(String regex) 
+## 8. join(CharSequence delimiter, CharSequence... elements) 
 ```java
-String str = "12345";
-boolean result = str.matches("\\d+");
-// Result: true
+String result = String.join("-", "Java", "Guides");
+// Result: "Java-Guides"
 ```
 
 ---
