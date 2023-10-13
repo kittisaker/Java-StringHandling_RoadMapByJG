@@ -1,12 +1,46 @@
-# Please select a Branch to enter each lesson.
-* Chapter-1 : Java String Class API Tutorial
-* Chapter-2 : Java StringBuffer Class API Tutorial
-* Chapter-3 : Java StringBuilder Class API Tutorial
-* Chapter-4 : Guide to Java String Constant Pool
-* Chapter-5 : Guide to String Best Practices in Java (Best Practice)
-* Chapter-6 : String Special Operations with Examples
-* Chapter-7 : String Comparison Methods with Examples
-* Chapter-8 : String Methods for Character Extraction
-* Chapter-9 : String Searching Methods with Examples
-* Chapter-10 : String Modifying Methods with Examples
+# Java Array : Chapter 9 String Searching Methods in Java with Examples
+
+## 1. Searching for a Character or Substring
+### indexOf(int ch) and indexOf(int ch, int fromIndex) 
+```java
+String str = "JavaGuides";
+int index = str.indexOf('a');
+// Result: 1
+```
+
+## 2. Searching for the Last Occurrence
+### lastIndexOf(int ch) and lastIndexOf(int ch, int fromIndex)
+```java
+String str = "JavaGuides";
+int index = str.lastIndexOf('a');
+// Result: 3
+```
+
+## 3. Checking If a String Contains a Sequence
+### contains(CharSequence sequence)
+```java
+String str = "JavaGuides";
+boolean result = str.contains("Guides");
+// Result: true
+```
+
+## 4. Checking Prefix and Suffix
+### startsWith(String prefix) and endsWith(String suffix)
+```java
+String str = "JavaGuides";
+boolean startsWith = str.startsWith("Java");
+// Result: true
+
+boolean endsWith = str.endsWith("Guides");
+// Result: true
+```
+
+## 5. Matching Regular Expressions 
+### matches(String regex) 
+```java
+String str = "12345";
+boolean result = str.matches("\\d+");
+// Result: true
+```
+
 ---
