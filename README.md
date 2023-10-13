@@ -453,26 +453,294 @@ public class IndexOfExample {
 </details>
 
 ### insert() methods
+insert() method has 12 overloaded versions:
+* StringBuffer insert(int offset, boolean b) - Inserts the string representation of the boolean argument into this sequence.
+* StringBuffer insert(int offset, char c) - Inserts the string representation of the char argument into this sequence.
+* StringBuffer insert(int offset, char[] str) - Inserts the string representation of the char array argument into this sequence.
+* StringBuffer insert(int index, char[] str, int offset, int len) - Inserts the string representation of a subarray of the str array argument into this sequence.
+* StringBuffer insert(int dstOffset, CharSequence s) - Inserts the specified CharSequence into this sequence.
+* StringBuffer insert(int dstOffset, CharSequence s, int start, int end) - Inserts a subsequence of the specified CharSequence into this sequence.
+* StringBuffer insert(int offset, double d) - Inserts the string representation of the double argument into this sequence.
+* StringBuffer insert(int offset, float f) - Inserts the string representation of the float argument into this sequence.
+* StringBuffer insert(int offset, int i) - Inserts the string representation of the second int argument into this sequence.
+* StringBuffer insert(int offset, long l) - Inserts the string representation of the long argument into this sequence.
+* StringBuffer insert(int offset, Object obj) - Inserts the string representation of the Object argument into this character sequence.
+* StringBuffer insert(int offset, String str) - Inserts the string into this character sequence.
+```java
+public class InsertExample {
+    public static void main(String[] args) {
+        // 12 insert overloaded method
+        StringBuffer builder = new StringBuffer("javaguides").insert(1,true);
+        System.out.println(builder.toString());
 
+        builder = new StringBuffer("javaguides").insert(0, 'J');
+        System.out.println(builder.toString());
 
+        char[] chars = {'d','e','v','e','l','o','p','e','r'};
+        builder = new StringBuffer("javaguides").insert(4, chars);
+        System.out.println(builder.toString());
 
+        CharSequence charSequence = new StringBuilder("J2EE/");
+        builder = new StringBuffer("javaguides").insert(0, charSequence);
+        System.out.println(builder.toString());
 
+        builder = new StringBuffer("javaguides").insert(0, 100.0d);
+        System.out.println(builder.toString());
 
+        builder = new StringBuffer("javaguides").insert(0, 100.0f);
+        System.out.println(builder.toString());
 
+        builder = new StringBuffer("javaguides").insert(0, 100);
+        System.out.println(builder.toString());
 
+        builder = new StringBuffer("javaguides").insert(0, 100l);
+        System.out.println(builder.toString());
 
+        builder = new StringBuffer("javaguides").insert(0, new Object());
+        System.out.println(builder.toString());
 
+        builder = new StringBuffer("javaguides").insert(0, "ultimate");
+        System.out.println(builder.toString());
 
+        builder = new StringBuffer("javaguides").insert(0, chars, 0, chars.length);
+        System.out.println(builder.toString());
 
-
-
----
+        builder = new StringBuffer("javaguides").insert(0, charSequence, 0, charSequence.length());
+        System.out.println(builder.toString());
+    }    
+}
+```
 
 <details>
 <summary>Output : </summary>
 
 ```shell
+jtrueavaguides
+Jjavaguides
+javadeveloperguides
+J2EE/javaguides
+100.0javaguides
+100.0javaguides
+100javaguides
+100javaguides
+java.lang.Object@372f7a8djavaguides
+ultimatejavaguides
+developerjavaguides
+J2EE/javaguides
+```
 
+</details>
+
+### lastIndexOf() methods
+* int lastIndexOf(String str) - Returns the index within this string of the rightmost occurrence of the specified substring.
+* int lastIndexOf(String str, int fromIndex) - Returns the index within this string of the last occurrence of the specified substring.
+```java
+public class LastIndexOfExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides");
+
+        // Method 1
+        int lastIndexOf = buffer.lastIndexOf("guides");
+        System.out.println(" last index of given string 'guides' in' " + buffer.toString()+"' ::  " + lastIndexOf);
+
+        // method 2
+        lastIndexOf = buffer.lastIndexOf("java", 3);
+        System.out.println(" last index of given string 'java' in' " + buffer.toString()+"' ::  " + lastIndexOf);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+ last index of given string 'guides' in' javaguides' ::  4
+ last index of given string 'java' in' javaguides' ::  0
+```
+
+</details>
+
+### length() Method
+```java
+public class LengthExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides");
+        int length = buffer.length();
+        
+        System.out.println(" length of the string '" + buffer + "' is :: " + length);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+ length of the string 'javaguides' is :: 10
+```
+
+</details>
+
+### replace(int start, int end, String str) Method
+```java
+public class ReplaceExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("jaguides");
+
+         // replace ja with java- start index 0 and end index -1
+         StringBuffer subBuffer = buffer.replace(0, 2, "java");
+
+         System.out.println(subBuffer);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+javaguides
+```
+
+</details>
+
+### reverse() Method
+```java
+public class ReverseExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides");
+
+        StringBuffer reverse = buffer.reverse();
+
+        System.out.println("Reversed string :" + reverse);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+Reversed string :sediugavaj
+```
+
+</details>
+
+### setCharAt(int index, char ch) Method
+```java
+public class SetCharExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides");
+
+        buffer.setCharAt(0, 'J');
+
+        System.out.println(buffer.toString());
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+Javaguides
+```
+
+</details>
+
+### setLength(int newLength) Method
+```java
+public class SetLengthExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides");
+        System.out.println("Before set length to 0 : " + buffer.length() + ", value :" + buffer);
+
+        buffer.setLength(0);
+        System.out.println("After set length to 0 : " + buffer.length() + ", value :" + buffer);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+Before set length to 0 : 10, value :javaguides
+After set length to 0 : 0, value :
+```
+
+</details>
+
+### substring() methods
+* String substring(int start) - Returns a new String that contains a subsequence of characters currently contained in this character sequence.
+* String substring(int start, int end) - Returns a new String that contains a subsequence of characters currently contained in this sequence.
+```java
+public class SubStringExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides");
+
+        // substring from start to end
+        String subStr = buffer.substring(0, buffer.length());
+        System.out.println("substring from 0 to length of the string : " + subStr);
+
+        // print java
+        System.out.println(buffer.substring(0, 4));
+
+        // print guides
+        System.out.println(buffer.substring(4, buffer.length()));
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+substring from 0 to length of the string : javaguides
+java
+guides
+```
+
+</details>
+
+### toString() Method
+```java
+public class ToStringExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides");
+        System.out.println(buffer.toString());
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+javaguides
+```
+
+</details>
+
+### trimToSize() Method
+```java
+public class TrimToSizeExample {
+    public static void main(String[] args) {
+        StringBuffer buffer = new StringBuffer("javaguides ");
+        System.out.println(buffer.capacity());
+        
+        buffer.trimToSize();
+        System.out.println(buffer.capacity());
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+27
+11
 ```
 
 </details>
