@@ -16,10 +16,6 @@ It's also important to note that the == operator checks for reference equality. 
 
 ## The intern() Method
 In Java, the intern() method of the String class can be used to find or create an equivalent String in the String Constant Pool. When the intern() method is called on a String object, it checks if a String with the same value is already present in the pool. If there is, it returns the reference to the pooled instance. If not, it adds the String to the pool and returns its reference. 
-
-<details>
-<summary>Output : </summary>
-
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -33,6 +29,13 @@ public class Main {
         System.out.println(str2 == str3); // Outputs "true"
     }
 }
+```
+<details>
+<summary>Output : </summary>
+
+```shell
+false
+true
 ```
 
 </details>
