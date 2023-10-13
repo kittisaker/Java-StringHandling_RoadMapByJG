@@ -1,38 +1,46 @@
-# Java Array : Chapter 8 String Methods for Character Extraction
+# Java Array : Chapter 9 String Searching Methods in Java with Examples
 
-## 1. Extracting a Single Character
-
-### charAt(int index) 
+## 1. Searching for a Character or Substring
+### indexOf(int ch) and indexOf(int ch, int fromIndex) 
 ```java
 String str = "JavaGuides";
-char ch = str.charAt(3);
-// Result: 'a'
+int index = str.indexOf('a');
+// Result: 1
 ```
 
-## 2. Extracting a Substring
-
-### substring(int beginIndex) and substring(int beginIndex, int endIndex) 
-
+## 2. Searching for the Last Occurrence
+### lastIndexOf(int ch) and lastIndexOf(int ch, int fromIndex)
 ```java
 String str = "JavaGuides";
-String subStr = str.substring(4, 10);
-// Result: "Guides"
+int index = str.lastIndexOf('a');
+// Result: 3
 ```
 
-## 3. Extracting Characters into an Array
-
-### toCharArray() and getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
-The toCharArray method returns a newly allocated character array whose length is the length of the string and whose contents are initialized to contain the character sequence represented by the string.
-
-The getChars method copies characters from a string into the destination character array.
+## 3. Checking If a String Contains a Sequence
+### contains(CharSequence sequence)
 ```java
 String str = "JavaGuides";
-char[] charArray = str.toCharArray();
-// Result: ['J', 'a', 'v', 'a', 'G', 'u', 'i', 'd', 'e', 's']
+boolean result = str.contains("Guides");
+// Result: true
+```
 
-char[] dst = new char[5];
-str.getChars(4, 9, dst, 0);
-// Result: ['G', 'u', 'i', 'd', 'e']
+## 4. Checking Prefix and Suffix
+### startsWith(String prefix) and endsWith(String suffix)
+```java
+String str = "JavaGuides";
+boolean startsWith = str.startsWith("Java");
+// Result: true
+
+boolean endsWith = str.endsWith("Guides");
+// Result: true
+```
+
+## 5. Matching Regular Expressions 
+### matches(String regex) 
+```java
+String str = "12345";
+boolean result = str.matches("\\d+");
+// Result: true
 ```
 
 ---
