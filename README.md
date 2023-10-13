@@ -1,64 +1,38 @@
-# Java Array : Chapter 7 String Comparison Methods in Java with Examples
+# Java Array : Chapter 8 String Methods for Character Extraction
 
-## 1. Using equals(Object anObject) 
+## 1. Extracting a Single Character
+
+### charAt(int index) 
 ```java
-String str1 = "Java";
-String str2 = "Java";
-boolean result = str1.equals(str2);
-// Result: true
+String str = "JavaGuides";
+char ch = str.charAt(3);
+// Result: 'a'
 ```
 
-## 2. Using equalsIgnoreCase(String str) 
+## 2. Extracting a Substring
+
+### substring(int beginIndex) and substring(int beginIndex, int endIndex) 
+
 ```java
-String str1 = "Java";
-String str2 = "java";
-boolean result = str1.equalsIgnoreCase(str2);
-// Result: true
+String str = "JavaGuides";
+String subStr = str.substring(4, 10);
+// Result: "Guides"
 ```
 
-## 3. Using regionMatches( ) 
-```java
-String str1 = "Welcome to Java";
-boolean result = str1.regionMatches(11, "Java", 0, 4);
-// Result: true
-```
+## 3. Extracting Characters into an Array
 
-## 4. Using startsWith( ) Method
-```java
-String str = "Java Programming";
-boolean result = str.startsWith("Java");
-// Result: true
-```
+### toCharArray() and getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
+The toCharArray method returns a newly allocated character array whose length is the length of the string and whose contents are initialized to contain the character sequence represented by the string.
 
-## 5. Using endsWith( ) Method
+The getChars method copies characters from a string into the destination character array.
 ```java
-String str = "Java Programming";
-boolean result = str.endsWith("Programming");
-// Result: true
-```
+String str = "JavaGuides";
+char[] charArray = str.toCharArray();
+// Result: ['J', 'a', 'v', 'a', 'G', 'u', 'i', 'd', 'e', 's']
 
-## 6. equals( ) Versus == 
-```java
-String str1 = new String("Java");
-String str2 = new String("Java");
-boolean result1 = str1.equals(str2); // true
-boolean result2 = (str1 == str2); // false
-```
-
-## 7. Using compareTo( ) 
-```java
-String str1 = "Apple";
-String str2 = "Banana";
-int result = str1.compareTo(str2);
-// Result: -1
-```
-
-## 8. Using compareToIgnoreCase(String str) 
-```java
-String str1 = "Apple";
-String str2 = "apple";
-int result = str1.compareToIgnoreCase(str2);
-// Result: 0
+char[] dst = new char[5];
+str.getChars(4, 9, dst, 0);
+// Result: ['G', 'u', 'i', 'd', 'e']
 ```
 
 ---
