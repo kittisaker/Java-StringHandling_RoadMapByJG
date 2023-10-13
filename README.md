@@ -1,41 +1,161 @@
-# Java Array : Chapter 4 Java String Constant Pool
+# Java Array : Chapter 6 String Special Operations with Examples
 
-## String Constant Pool with new Keyword
-If we create a string using the new keyword, it will always create a new object in the heap space, but it also checks the string constant pool. If a string with the same value is found in the pool, the newly created string object in the heap will have the same value. However, if a string with the same value is not found in the pool, a new string will also be created in the pool.
+## 1. String Literals
 ```java
-String str1 = new String("JavaGuides"); // creates one string object in the heap,
-                                        // and one string in the string constant pool
-String str2 = new String("JavaGuides"); // creates a second string object in the heap,
-                                        // but reuses the string in the constant pool
+String s1="Welcome";  
+String s2="Welcome";//will not create new instance
 ```
 
-## Why use the String Constant Pool
-The string constant pool helps save memory when your program creates many strings. Because strings are immutable in Java, the JVM can safely reuse them without worrying about the value being changed. 
-
-It's also important to note that the == operator checks for reference equality. Two string references are equal if and only if they point to the exact same object, which can only happen through string interning.
-
-## The intern() Method
-In Java, the intern() method of the String class can be used to find or create an equivalent String in the String Constant Pool. When the intern() method is called on a String object, it checks if a String with the same value is already present in the pool. If there is, it returns the reference to the pooled instance. If not, it adds the String to the pool and returns its reference. 
+## 2. String Concatenation
+In general, Java does not allow operators to be applied to String objects. The one exception to this rule is the + operator, which concatenates two strings, producing a String object as the result. This allows you to chain together a series of + operations. 
 ```java
-public class Main {
-    public static void main(String[] args) {
-        String str1 = new String("JavaGuides"); // creates a new string object in heap and 
-                                                // the literal "JavaGuides" in the string constant pool
-        String str2 = "JavaGuides"; // refers to the instance in the string constant pool
-        String str3 = str1.intern(); // str1 content is added to the string constant pool 
-                                     // and its reference is returned
+String age = "9";
+String s = "He is " + age + " years old.";
+System.out.println(s);      // He is 9 years old.
+```
 
-        System.out.println(str1 == str2); // Outputs "false"
-        System.out.println(str2 == str3); // Outputs "true"
+```java
+// Using concatenation to prevent long lines.
+class ConCat {
+    public static void main(String args[]) {
+         String longStr = "This could have been " + "a very long line that would have "
+         + "wrapped around. But string concatenation " + "prevents this.";
+         System.out.println(longStr);
     }
 }
 ```
+
+### String java.lang.String.concat(String str)
+This method returns a string that represents the concatenation of this object's characters followed by the string argument's characters.
+```java
+public class ConcatExmaple {
+    public static void main(String[] args) {
+        String str = "javaguides";
+        str = str.concat(".net");
+        System.out.println("Concatenates the specified string to the end of this string : " + str);
+
+        System.out.println("cares".concat("s"));
+        System.out.println("to".concat("get"));
+    }
+}
+```
+
 <details>
 <summary>Output : </summary>
 
 ```shell
-false
+Concatenates the specified string to the end of this string : javaguides.net
+caress
+toget
+```
+
+</details>
+
+## 3. String Concatenation with Other Data Types
+```java
+String s = "four: " + 2 + 2;
+System.out.println(s); // four: 22
+
+```
+
+rather than the
+```shell
+four: 4
+```
+
+```java
+String s = "four: " + (2 + 2);  // four: 4
+```
+
+## 4. String Conversion and toString( )
+### valueOf( ) Method
+```java
+public class StringValueOfExample5 {  
+    public static void main(String[] args) {  
+        boolean b1=true;  
+        byte b2=11;    
+        short sh = 12;  
+        int i = 13;  
+        long l = 14L;  
+        float f = 15.5f;  
+        double d = 16.5d;  
+        char chr[]={'j','a','v','a'};  
+        StringValueOfExample5 obj=new StringValueOfExample5();  
+
+        String s1 = String.valueOf(b1);    
+        String s2 = String.valueOf(b2);    
+        String s3 = String.valueOf(sh);    
+        String s4 = String.valueOf(i);    
+        String s5 = String.valueOf(l);    
+        String s6 = String.valueOf(f);    
+        String s7 = String.valueOf(d);    
+        String s8 = String.valueOf(chr);    
+        String s9 = String.valueOf(obj); 
+           
+        System.out.println(s1);  
+        System.out.println(s2);  
+        System.out.println(s3);  
+        System.out.println(s4);  
+        System.out.println(s5);  
+        System.out.println(s6);  
+        System.out.println(s7);  
+        System.out.println(s8);  
+        System.out.println(s9);  
+    }  
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
 true
+11
+12
+13
+14
+15.5
+16.5
+java
+StringValueOfExample5@372f7a8d
+```
+
+</details>
+
+### toString() Method
+```java
+class Box {
+    double width;
+    double height;
+    double depth;
+
+    Box(double w, double h, double d) {
+         width = w;
+         height = h;
+         depth = d;
+    }
+
+    public String toString() {
+         return "Dimensions are " + width + " by " + depth + " by " + height + ".";
+    }
+}
+
+class toStringDemo {
+    public static void main(String args[]) {
+         Box b = new Box(10, 12, 14);
+         String s = "Box b: " + b; // concatenate Box object
+         System.out.println(b); // convert Box to string
+         System.out.println(s);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+Dimensions are 10.0 by 14.0 by 12.0
+Box b: Dimensions are 10.0 by 14.0 by 12.0
 ```
 
 </details>
